@@ -10,4 +10,4 @@ pip install -r requirements.txt
 ### 3-step process
 1. Open ```config.json``` in a text editor such as notepad etc.  and fill in the project ID and API Token
 2. Enter your project ID and [Geodeisgnhub API Token](https://www.geodesignhub.com/api/token). (You can your token by going to the link). 
-3. Run ```python download_design_synthesis.py``` and follow the instructions to download a design synthesis. 
+3. Run ```python download_data.py``` and follow the instructions to download a design synthesis or diagram data. 
