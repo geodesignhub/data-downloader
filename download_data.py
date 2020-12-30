@@ -128,10 +128,10 @@ if __name__ == "__main__":
 
         cwd = os.getcwd()
 
-        logger.info("Writing Shapefiles")
+        logger.info("Writing Geopackage files")
         if polygons:
-          shape_file = os.path.join(cwd, 'output' ,'polygons.shp')
-          with collection(shape_file, 'w', driver='ESRI Shapefile',crs=crs, schema=polygon_schema) as c:
+          gpkg_polygon_file = os.path.join(cwd, 'output' ,'polygons.gpkg')
+          with collection(gpkg_polygon_file, 'w', driver='GPKG',crs=crs, schema=polygon_schema) as c:
             
               ## If there are multiple geometries, put the "for" loop here
             for current_polygon in polygons:
@@ -144,8 +144,8 @@ if __name__ == "__main__":
           
 
         if lines:
-          shape_file = os.path.join(cwd, 'output' ,'linestring.shp')
-          with collection(shape_file, 'w', driver='ESRI Shapefile',crs=crs, schema=polyline_schema) as c:
+          gpkg_line_file = os.path.join(cwd, 'output' ,'lines.gpkg')
+          with collection(gpkg_line_file, 'w', driver='GPKG',crs=crs, schema=polyline_schema) as c:
             
               ## If there are multiple geometries, put the "for" loop here
             for current_line in lines:
@@ -155,8 +155,8 @@ if __name__ == "__main__":
                   'geometry': mapping(current_line['shape']),
                   'properties': {'diagramid': current_line['properties']['diagramid'], 'author':current_line['properties']['author'], 'desc':current_line['properties']['description'], 'sysname':current_line['properties']['sysname'],'type':current_line['properties']['areatype'],'color':current_line['properties']['color'],'rgbcolor':rgb_color}
               })
-        logger.info("Shapefiles written in output directory")
-        print("Shapefiles written in output directory")
+        logger.info("Geopackage written in output directory")
+        print("Geopackage files written in output directory")
       else:
         print("Please review your projectid and apitoken in the config.py file")
         logger.error("Please review your projectid and apitoken in the config.py file")
